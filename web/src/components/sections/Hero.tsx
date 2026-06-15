@@ -3,6 +3,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { Reveal } from "@/components/primitives/Reveal";
 import { AnimatedCounter } from "@/components/primitives/AnimatedCounter";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { heroStats } from "@/lib/data";
 import { withBase } from "@/lib/utils";
 
@@ -12,10 +13,15 @@ export function Hero() {
       <div className="container-px grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
         {/* Left: the pitch */}
         <Reveal className="max-w-2xl">
-          <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-muted">
-            <span className="h-2 w-2 rounded-full bg-accent2 animate-pulse-dot" />
-            Available for AI, Mobile &amp; Frontend roles
-          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-muted">
+              <span className="h-2 w-2 rounded-full bg-accent2 animate-pulse-dot" />
+              Available for
+            </span>
+            <Badge>AI Engineering</Badge>
+            <Badge>Mobile App Development</Badge>
+            <Badge>Frontend Development</Badge>
+          </div>
 
           <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
             Ratnesh Singh
