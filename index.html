@@ -2,306 +2,475 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ratnesh Singh - Portfolio</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-  <script>
-    (function(){
-      emailjs.init("L5ydtKfbJsy5zsv2C"); 
-    })();
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#08080b" />
+
+  <title>Ratnesh Singh — AI Software Engineer</title>
+  <meta name="description" content="Ratnesh Singh is an AI Software Engineer building production-grade, AI-powered products. Creator of MySA (150K+ downloads) using Google Gemini, LLM integration, prompt engineering, and speech-to-text." />
+  <meta name="author" content="Ratnesh Singh" />
+  <meta name="keywords" content="Ratnesh Singh, AI Software Engineer, LLM, Google Gemini, Prompt Engineering, Speech-to-Text, Flutter, Android, Kotlin, MySA, MySmartAssistant" />
+  <link rel="canonical" href="https://ratneshsingh955.github.io/ratnesh-portfolio/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ratnesh Singh — AI Software Engineer" />
+  <meta property="og:description" content="Building production-grade AI products. Creator of MySA (150K+ downloads) — Google Gemini, LLMs, prompt engineering, speech-to-text." />
+  <meta property="og:url" content="https://ratneshsingh955.github.io/ratnesh-portfolio/" />
+  <meta property="og:image" content="https://ratneshsingh955.github.io/ratnesh-portfolio/images/profile.jpeg" />
+  <meta property="og:image:alt" content="Ratnesh Singh, AI Software Engineer" />
+  <meta property="og:site_name" content="Ratnesh Singh" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ratnesh Singh — AI Software Engineer" />
+  <meta name="twitter:description" content="Building production-grade AI products. Creator of MySA (150K+ downloads)." />
+  <meta name="twitter:image" content="https://ratneshsingh955.github.io/ratnesh-portfolio/images/profile.jpeg" />
+
+  <!-- Favicon (inline SVG, no extra request) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23090910'/><text x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='700' fill='%238b5cf6' text-anchor='middle'>R</text></svg>" />
+
+  <!-- Fonts: preconnect + single non-blocking request -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Structured data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ratnesh Singh",
+    "jobTitle": "AI Software Engineer",
+    "url": "https://ratneshsingh955.github.io/ratnesh-portfolio/",
+    "image": "https://ratneshsingh955.github.io/ratnesh-portfolio/images/profile.jpeg",
+    "email": "mailto:ratneshsingh955@gmail.com",
+    "worksFor": { "@type": "Organization", "name": "MySmartAssistant.ai" },
+    "knowsAbout": ["Large Language Models", "Google Gemini", "Prompt Engineering", "Speech-to-Text", "Flutter", "Android", "Kotlin"],
+    "sameAs": [
+      "https://www.linkedin.com/in/ratnesh-singhs/",
+      "https://github.com/ratneshsingh955"
+    ]
+  }
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Ambient AI background -->
+  <div class="bg-layer" aria-hidden="true">
+    <canvas id="neural-canvas"></canvas>
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow--1"></div>
+    <div class="bg-glow bg-glow--2"></div>
+  </div>
+
   <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <a href="#home">Ratnesh Singh</a>
-      </div>
+  <header class="navbar" id="navbar">
+    <nav class="nav" aria-label="Primary">
+      <a href="#home" class="nav-logo">
+        <span class="nav-logo__mark">R</span>
+        <span class="nav-logo__text">Ratnesh Singh</span>
+      </a>
       <ul class="nav-menu" id="nav-menu">
-        <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#mysa" class="nav-link">MySA</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#research" class="nav-link">Research</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </div>
-    </div>
-  </nav>
+      <a href="#contact" class="btn btn--primary btn--sm nav-cta">Get in touch</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero-background"><div class="hero-particles"></div></div>
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1 class="hero-title">Hi, I’m <span class="text">Ratnesh Singh</span></h1>
-        <p class="hero-subtitle">Software Engineer</p>
-        <p class="hero-subtitle">Android & Front-end Developer</p>
-        <p class="hero-description">
-          I craft award-winning apps, multiplayer games, and scalable web platforms.  
-          From Android game engines to web apps, I thrive on building high-performance solutions that delight users and boost business impact.
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-          <a href="Ratnesh_CvAndroid.pdf" class="btn btn-outline" download="Ratnesh_Singh_Resume.pdf">
-            <i class="fas fa-download"></i> Download Resume
-          </a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="profile-card glass-card floating">
-          <div class="profile-image">
-            <img src="images/profile.jpeg" alt="Ratnesh Singh" id="profile-img">
-          </div>
-          <div class="floating-icons">
-            <div class="icon-item"><i class="fab fa-android"></i></div>
-            <div class="icon-item"><i class="fab fa-java"></i></div>
-            <div class="icon-item"><i class="fab fa-korvue"></i></div>
-            <div class="icon-item"><i class="fab fa-react"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-indicator"><div class="scroll-arrow"><i class="fas fa-chevron-down"></i></div></div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">Turning complex ideas into powerful digital products</p>
-      </div>
-      <div class="about-content">
-        <div class="about-text">
-          <p>
-            I'm a <b>Software Engineer</b> with <b>3+ years</b> of professional experience specializing in  
-            <b>Android apps, multiplayer game development, payment integration</b>, and  
-            <b>enterprise applications</b>.  
-            Currently working at <b>Witzeal Technologies</b> on BigCash, previously contributed to BigSports games and worked at <b>Wipro</b> on enterprise solutions.
-            I've built <b>award-winning features</b> that boosted company revenue by 12–15% and delivered products used by thousands of players every day.  
-            My expertise spans from <b>Java/Kotlin Android SDKs</b> to <b>full-stack web development</b>.
+  <main id="main">
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="hero__inner">
+        <div class="hero__text reveal">
+          <span class="badge">
+            <span class="badge__dot"></span>
+            Available for AI engineering roles
+          </span>
+          <h1 class="hero__title">
+            Building <span class="grad">production-grade<br />AI products</span>
+          </h1>
+          <p class="hero__role">Ratnesh Singh — AI Software Engineer</p>
+          <p class="hero__desc">
+            I ship AI-powered mobile experiences used by real people at scale. Currently
+            building <strong>MySA</strong> at MySmartAssistant.ai — an AI productivity
+            platform with <strong>150K+ downloads</strong> — integrating Google Gemini,
+            LLMs, prompt engineering, and speech-to-text into Flutter and Android.
           </p>
-          <div class="stats-grid">
-            <div class="stat-item glow-effect"><h3>3+</h3><p>Years Experience</p></div>
-            <div class="stat-item glow-effect"><h3>15+</h3><p>Projects Completed</p></div>
-            <div class="stat-item glow-effect"><h3>12+</h3><p>Games Launched</p></div>
+          <div class="hero__cta">
+            <a href="#mysa" class="btn btn--primary">View featured product</a>
+            <a href="Ratnesh_Singh_Resume.pdf" class="btn btn--ghost" download>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+              Résumé
+            </a>
           </div>
+          <dl class="hero__stats">
+            <div><dt>Downloads</dt><dd data-count="150" data-suffix="K+">0</dd></div>
+            <div><dt>Years building</dt><dd data-count="4" data-suffix="+">0</dd></div>
+            <div><dt>Apps shipped</dt><dd data-count="12" data-suffix="+">0</dd></div>
+          </dl>
         </div>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3>Android & Games</h3>
-            <div class="skills">
-              <span class="skill-tag">Kotlin</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">Android</span>
-              <span class="skill-tag">Firebase</span>
-              <span class="skill-tag">REST APIs</span>
-              <span class="skill-tag">LibGdx</span>
-              <span class="skill-tag">Jetpack Compose</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3>Web & Backend</h3>
-            <div class="skills">
-              <span class="skill-tag">React</span>
-              <span class="skill-tag">Node.js</span>
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">PHP</span>
-              <span class="skill-tag">MySQL</span>
-              <span class="skill-tag">Spring Boot</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3>Tools & Framework</h3>
-            <div class="skills">
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">Android Studio</span>
-              <span class="skill-tag">CI/CD</span>
-              <span class="skill-tag">Agile</span>
-              <span class="skill-tag">Trello</span>
-               <span class="skill-tag">Prompt Engineering</span>
-                <span class="skill-tag">Figma</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Projects -->
-  <section id="projects" class="projects grid-pattern">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle">Some real-world apps and games I’ve built</p>
+        <div class="hero__visual reveal">
+          <div class="glass profile-card">
+            <div class="profile-card__top">
+              <img src="images/profile.jpeg" alt="Portrait of Ratnesh Singh" width="96" height="96" class="profile-card__avatar" fetchpriority="high" />
+              <div>
+                <p class="profile-card__name">Ratnesh Singh</p>
+                <p class="profile-card__sub">AI Software Engineer @ MySmartAssistant.ai</p>
+              </div>
+            </div>
+            <div class="profile-card__chips">
+              <span class="chip">Google Gemini</span>
+              <span class="chip">LLM Integration</span>
+              <span class="chip">Prompt Engineering</span>
+              <span class="chip">Speech-to-Text</span>
+              <span class="chip">Flutter</span>
+              <span class="chip">Kotlin</span>
+            </div>
+            <pre class="profile-card__code" aria-hidden="true"><code><span class="c-key">const</span> engineer = {
+  <span class="c-prop">focus</span>: <span class="c-str">"AI products, in production"</span>,
+  <span class="c-prop">shipping</span>: <span class="c-str">"MySA"</span>,
+  <span class="c-prop">stack</span>: [<span class="c-str">"Gemini"</span>, <span class="c-str">"LLMs"</span>, <span class="c-str">"Flutter"</span>],
+};</code></pre>
+          </div>
+        </div>
       </div>
-      <div class="project-filters">
-        <button class="filter-btn active glow-effect" data-filter="all">All</button>
-        <button class="filter-btn glow-effect" data-filter="android">Android</button>
-        <button class="filter-btn glow-effect" data-filter="game">Games</button>
-        <button class="filter-btn glow-effect" data-filter="web">Web</button>
-      </div>
-      <div class="projects-grid" id="projects-grid"></div>
-    </div>
-  </section>
+      <a href="#about" class="scroll-cue" aria-label="Scroll to about">
+        <span></span>
+      </a>
+    </section>
 
-  <!-- Experience -->
-  <section id="experience" class="experience">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Professional Experience</h2>
-        <p class="section-subtitle">My journey in software development</p>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-date">March 2024 - Present</div>
-            <h3>Android Developer - BigCash</h3>
-            <h4>Witzeal Technologies</h4>
-            <p>Leading development of multiplayer Android games and payment integration systems:</p>
-            <ul>
-              <li>Developed <strong>Card Game</strong> with scalable multiplayer instances using Java/Kotlin</li>
-              <li>Integrated <strong>payment gateways</strong> (Razorpay, Paytm) with robust error handling</li>
-              <li>Implemented <strong>real-time multiplayer</strong> features increasing user engagement by 40%</li>
-              <li>Designed scalable game architecture supporting <strong>1000+ concurrent players</strong></li>
-              <li>Optimized performance for <strong>low-latency gaming</strong> experience</li>
-            </ul>
-            <div class="timeline-skills">
-              <span>Java</span>
-              <span>Kotlin</span>
-              <span>LibGDX</span>
-              <span>Android SDK</span>
-              <span>Firebase</span>
-              <span>Payment Integration</span>
-            </div>
-          </div>
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">01 — About</span>
+          <h2 class="section-title">Engineer first, AI specialist by focus.</h2>
         </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-date">July 2023 - February 2024</div>
-            <h3>Android Developer - BigSports</h3>
-            <h4>Witzeal Technologies</h4>
-            <p>Specialized in game development and user experience optimization:</p>
-            <ul>
-              <li>Built <strong>12+ casual games</strong> (Car Race, Fruit Chop) for BigSports flagship app</li>
-              <li>Created <strong>award-winning game features</strong> that boosted company revenue by 12-15%</li>
-              <li>Developed <strong>LibGDX-based game engine</strong> for rapid game development</li>
-              <li>Implemented <strong>analytics tracking</strong> and user behavior analysis</li>
-              <li>Optimized game performance for <strong>low-end Android devices</strong></li>
-            </ul>
-            <div class="timeline-skills">
-              <span>LibGDX</span>
-              <span>Android</span>
-              <span>Java</span>
-              <span>Kotlin</span>
-              <span>Game Development</span>
-              <span>Performance Optimization</span>
-            </div>
+        <div class="about reveal">
+          <div class="about__lead">
+            <p>
+              I'm an AI Software Engineer with <strong>4+ years</strong> of experience taking
+              products from idea to production at scale. My work sits where modern AI meets
+              shipping software: integrating <strong>Google Gemini and LLMs</strong>, designing
+              reliable <strong>prompt-engineering</strong> systems, and building responsive
+              <strong>speech-to-text</strong> experiences inside real mobile apps.
+            </p>
+            <p>
+              Today I build <strong>MySA</strong> at MySmartAssistant.ai. Before AI, I shipped
+              12+ multiplayer Android games at Witzeal and delivered enterprise commerce
+              systems at Wipro — so I bring production discipline (Clean Architecture, MVVM,
+              performance tuning) to every AI feature I build.
+            </p>
           </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-date">April 2022 - June 2023</div>
-            <h3>Software Developer</h3>
-            <h4>Wipro</h4>
-            <p>Enterprise software development and client project delivery:</p>
-            <ul>
-              <li>Developed <strong>enterprise applications</strong> using Java and Spring Boot</li>
-              <li>Worked on <strong>client projects</strong> with strict deadlines and quality standards</li>
-              <li>Implemented <strong>RESTful APIs</strong> and microservices architecture</li>
-              <li>Collaborated with <strong>cross-functional teams</strong> in Agile environment</li>
-              <li>Performed <strong>code reviews</strong> and maintained high code quality standards</li>
-            </ul>
-            <div class="timeline-skills">
-              <span>Java</span>
-              <span>Spring Boot</span>
-              <span>REST APIs</span>
-              <span>Microservices</span>
-              <span>Agile</span>
-              <span>Enterprise Development</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-date">2020 - 2022</div>
-            <h3>Personal Growth & Learning</h3>
-            <h4>Self-Directed Development</h4>
-            <p>Built practical applications and expanded technical skills:</p>
-            <ul>
-              <li>Created <strong>Todo App</strong> with full CRUD functionality using React and Node.js</li>
-              <li>Developed <strong>Simple Learning App</strong> for interactive educational content</li>
-              <li>Built <strong>Legal-Ease</strong> - Law firm management platform using PHP/MySQL</li>
-              <li>Created multiple <strong>responsive websites</strong> with modern design principles</li>
-              <li>Mastered <strong>version control</strong> with Git/GitHub and deployment strategies</li>
-            </ul>
-            <div class="timeline-skills">
-              <span>React</span>
-              <span>Node.js</span>
-              <span>PHP</span>
-              <span>MySQL</span>
-              <span>JavaScript</span>
-              <span>HTML/CSS</span>
-              <span>Bootstrap</span>
-            </div>
-          </div>
+          <ul class="about__pillars">
+            <li class="glass">
+              <h3>AI in production</h3>
+              <p>LLM features that survive real users — latency, cost, reliability, and graceful failure all handled.</p>
+            </li>
+            <li class="glass">
+              <h3>Product mindset</h3>
+              <p>I optimize for outcomes, not demos. Shipped features have driven measurable engagement and revenue.</p>
+            </li>
+            <li class="glass">
+              <h3>Engineering rigor</h3>
+              <p>Clean Architecture, MVVM, and Baseline Profiles — AI that's also maintainable, fast software.</p>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">I’d love to hear about your next project</p>
+    <!-- Experience -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">02 — Experience</span>
+          <h2 class="section-title">Professional experience</h2>
+        </div>
+        <ol class="timeline">
+          <li class="timeline__item reveal">
+            <div class="glass timeline__card">
+              <div class="timeline__row">
+                <h3>AI Software Engineer</h3>
+                <span class="timeline__date">Dec 2025 — Present</span>
+              </div>
+              <p class="timeline__org">MySmartAssistant.ai</p>
+              <ul class="timeline__points">
+                <li>Building <strong>MySA</strong>, an AI productivity platform with <strong>150K+ downloads</strong> across Android, iOS, and Web.</li>
+                <li>Integrate <strong>Google Gemini</strong> and multiple LLMs into core product experiences.</li>
+                <li>Design <strong>prompt-engineering</strong> pipelines and <strong>speech-to-text</strong> voice features.</li>
+                <li>Optimize Android performance with <strong>Baseline Profiles</strong>; ship on Clean Architecture + MVVM.</li>
+              </ul>
+              <div class="tags">
+                <span>Google Gemini</span><span>LLMs</span><span>Prompt Engineering</span><span>Speech-to-Text</span><span>Flutter</span><span>Kotlin</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="glass timeline__card">
+              <div class="timeline__row">
+                <h3>Software Engineer</h3>
+                <span class="timeline__date">Jul 2023 — Nov 2025</span>
+              </div>
+              <p class="timeline__org">Witzeal Technologies</p>
+              <ul class="timeline__points">
+                <li>Developed and shipped <strong>12+ multiplayer Android games</strong> used by thousands of daily players.</li>
+                <li>Integrated payment SDKs, Firebase, and REST APIs with robust error handling.</li>
+                <li>Improved performance, stability, and memory usage across the game portfolio.</li>
+                <li>Contributed to engineering initiatives supporting <strong>12–15% revenue growth</strong>.</li>
+              </ul>
+              <div class="tags">
+                <span>Kotlin</span><span>Java</span><span>Android SDK</span><span>LibGDX</span><span>Firebase</span><span>Payments</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="glass timeline__card">
+              <div class="timeline__row">
+                <h3>Project Engineer</h3>
+                <span class="timeline__date">Apr 2022 — Jun 2023</span>
+              </div>
+              <p class="timeline__org">Wipro Ltd</p>
+              <ul class="timeline__points">
+                <li>Built enterprise applications on the <strong>SAP Hybris Commerce</strong> platform.</li>
+                <li>Delivered production support and feature enhancements for enterprise clients.</li>
+              </ul>
+              <div class="tags">
+                <span>Java</span><span>SAP Hybris</span><span>Enterprise</span><span>Agile</span>
+              </div>
+            </div>
+          </li>
+        </ol>
       </div>
-      <div class="contact-content">
-        <div class="contact-info">
-          <h3>Let’s Connect</h3>
-          <p>Email me directly or use the form — I’ll reply fast.</p>
-          <div class="contact-methods">
-            <div class="contact-method"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>ratneshsingh955@gmail.com</p></div></div>
-            <div class="contact-method"><i class="fas fa-phone"></i><div><h4>Phone</h4><p>+91 8934068644</p></div></div>
-            <div class="contact-method"><i class="fas fa-map-marker-alt"></i><div><h4>Location</h4><p>India</p></div></div>
+    </section>
+
+    <!-- Featured product: MySA -->
+    <section id="mysa" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">03 — Featured product</span>
+          <h2 class="section-title">MySA — My Smart AI Assistant</h2>
+        </div>
+        <div class="glass feature reveal">
+          <div class="feature__main">
+            <span class="badge"><span class="badge__dot"></span>Live · 150K+ downloads</span>
+            <h3 class="feature__title">An AI productivity platform people actually use every day.</h3>
+            <p class="feature__desc">
+              MySA brings AI chat, a voice assistant, smart calendar, and document
+              understanding into one productivity app across Android, iOS, and Web. I work
+              on the AI layer end-to-end — from Gemini and LLM integration to prompt design,
+              speech-to-text, and the on-device performance that keeps it fast.
+            </p>
+            <ul class="feature__features">
+              <li>AI Chat</li>
+              <li>Voice Assistant</li>
+              <li>Smart Calendar</li>
+              <li>Task Management</li>
+              <li>Workspace Management</li>
+              <li>Smart Notes</li>
+              <li>Document AI</li>
+            </ul>
+            <p class="feature__note">
+              Built as part of my work at MySmartAssistant.ai. Production source is proprietary and not public.
+            </p>
           </div>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/ratnesh-singhs/" class="social-link"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/ratneshsingh955" class="social-link"><i class="fab fa-github"></i></a>
+          <aside class="feature__side">
+            <div class="metric"><span class="metric__num grad">150K+</span><span class="metric__label">Downloads</span></div>
+            <div class="metric"><span class="metric__num grad">3</span><span class="metric__label">Platforms · Android, iOS, Web</span></div>
+            <div class="feature__platforms">
+              <span class="chip">Android</span><span class="chip">iOS</span><span class="chip">Web</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">04 — Projects</span>
+          <h2 class="section-title">Selected projects</h2>
+        </div>
+        <div class="cards" id="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">05 — Skills</span>
+          <h2 class="section-title">Technical skills</h2>
+        </div>
+        <div class="skills reveal">
+          <div class="glass skills__group">
+            <h3>Artificial Intelligence</h3>
+            <div class="tags tags--lg">
+              <span>Google Gemini</span><span>LLM Integration</span><span>Prompt Engineering</span><span>Speech-to-Text</span>
+            </div>
+          </div>
+          <div class="glass skills__group">
+            <h3>Mobile</h3>
+            <div class="tags tags--lg">
+              <span>Flutter</span><span>Dart</span><span>Kotlin</span><span>Java</span><span>Android SDK</span>
+            </div>
+          </div>
+          <div class="glass skills__group">
+            <h3>Architecture</h3>
+            <div class="tags tags--lg">
+              <span>Clean Architecture</span><span>MVVM</span><span>Baseline Profiles</span>
+            </div>
+          </div>
+          <div class="glass skills__group">
+            <h3>Backend &amp; Cloud</h3>
+            <div class="tags tags--lg">
+              <span>Firebase</span><span>REST APIs</span>
+            </div>
+          </div>
+          <div class="glass skills__group">
+            <h3>Tools</h3>
+            <div class="tags tags--lg">
+              <span>Android Studio</span><span>VS Code</span><span>Git</span><span>GitHub</span>
+            </div>
           </div>
         </div>
-        <form class="contact-form" id="contact-form">
-          <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
-          <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
-          <div class="form-group"><input type="text" name="subject" placeholder="Subject" required></div>
-          <div class="form-group"><textarea name="message" placeholder="Your Message" rows="6" required></textarea></div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-        </form>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer"><div class="container"><div class="footer-content"><p>&copy; 2025 Ratnesh Singh. All rights reserved.</p><p>Built with ❤️</p></div></div></footer>
-  <script src="js/script.js"></script>
+    <!-- Research -->
+    <section id="research" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">06 — Research</span>
+          <h2 class="section-title">Research publication</h2>
+        </div>
+        <a class="glass research reveal" href="https://ieeexplore.ieee.org/document/9792700" target="_blank" rel="noopener">
+          <div class="research__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="research__body">
+            <span class="research__pub">IEEE Publication</span>
+            <h3>Hybrid Lawyer Recommendation System Based on AGE-MOEA</h3>
+            <p>A multi-objective evolutionary approach to building a hybrid recommendation system — peer-reviewed and published by IEEE.</p>
+            <span class="research__link">Read on IEEE Xplore
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- GitHub activity -->
+    <section id="github" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">07 — Open source</span>
+          <h2 class="section-title">GitHub activity</h2>
+        </div>
+        <div class="github reveal">
+          <div class="glass github__card">
+            <img loading="lazy" alt="Ratnesh Singh's GitHub statistics"
+              src="https://github-readme-stats.vercel.app/api?username=ratneshsingh955&show_icons=true&hide_border=true&bg_color=00000000&title_color=8b5cf6&icon_color=22d3ee&text_color=a1a1aa&hide=contribs" />
+          </div>
+          <div class="glass github__card">
+            <img loading="lazy" alt="Ratnesh Singh's most used languages"
+              src="https://github-readme-stats.vercel.app/api/top-langs/?username=ratneshsingh955&layout=compact&hide_border=true&bg_color=00000000&title_color=8b5cf6&text_color=a1a1aa&langs_count=8" />
+          </div>
+          <div class="glass github__card github__card--wide">
+            <img loading="lazy" alt="Ratnesh Singh's GitHub contribution graph"
+              src="https://ghchart.rshah.org/8b5cf6/ratneshsingh955" />
+          </div>
+        </div>
+        <p class="github__cta">
+          <a href="https://github.com/ratneshsingh955" target="_blank" rel="noopener" class="btn btn--ghost">View full GitHub profile</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">08 — Contact</span>
+          <h2 class="section-title">Let's build something intelligent.</h2>
+        </div>
+        <div class="contact reveal">
+          <div class="contact__info">
+            <p class="contact__lead">
+              Open to AI engineering roles and collaborations. The fastest way to reach me is
+              email — I reply quickly.
+            </p>
+            <button class="glass contact__email" id="copy-email" type="button" data-email="ratneshsingh955@gmail.com">
+              <span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                ratneshsingh955@gmail.com
+              </span>
+              <span class="contact__copy" aria-hidden="true">Copy</span>
+            </button>
+            <div class="contact__socials">
+              <a href="https://www.linkedin.com/in/ratnesh-singhs/" target="_blank" rel="noopener" class="glass social" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8.5h4V24h-4V8.5zM8 8.5h3.83v2.1h.05c.53-1 1.84-2.1 3.79-2.1C19.7 8.5 21 10.7 21 14.04V24h-4v-8.6c0-2.05-.73-3.45-2.56-3.45-1.4 0-2.23.94-2.6 1.85-.13.32-.16.77-.16 1.22V24H8V8.5z"/></svg>
+              </a>
+              <a href="https://github.com/ratneshsingh955" target="_blank" rel="noopener" class="glass social" aria-label="GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.31-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+              <a href="mailto:ratneshsingh955@gmail.com" class="glass social" aria-label="Email">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <form class="glass contact__form" id="contact-form" method="POST" action="https://formspree.io/f/mvznlzpl" novalidate>
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">Send message</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year">2026</span> Ratnesh Singh · AI Software Engineer</p>
+      <p>Designed &amp; built from scratch.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
 </body>
 </html>

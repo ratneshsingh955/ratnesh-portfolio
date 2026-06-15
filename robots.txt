@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ratneshsingh955.github.io/ratnesh-portfolio/sitemap.xml

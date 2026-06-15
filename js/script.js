@@ -1,312 +1,346 @@
-// Portfolio Website JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    initNavigation();
-    initHero();
-    initProjects();
+/* =========================================================
+   Ratnesh Singh — Portfolio interactions
+   ========================================================= */
+(function () {
+  "use strict";
+
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initYear();
+    initNav();
+    initReveal();
+    initCounters();
+    renderProjects();
+    initCopyEmail();
     initContactForm();
-    initScrollAnimations();
-    initParticles();
-    initResumeDownload();
-    ensureTextVisibility();
-});
+    if (!prefersReduced) initNeuralCanvas();
+  });
 
-// Ensure text visibility
-function ensureTextVisibility() {
-    const gradientText = document.querySelector('.gradient-text');
-    if (gradientText) {
-        setTimeout(() => {
-            const style = window.getComputedStyle(gradientText);
-            if (style.webkitTextFillColor === 'transparent') {
-                gradientText.style.webkitTextFillColor = 'var(--primary-color)';
-                gradientText.style.color = 'var(--primary-color)';
-                gradientText.style.background = 'none';
-            }
-        }, 100);
-    }
-    const navLogo = document.querySelector('.nav-logo a');
-    if (navLogo) { navLogo.style.visibility = 'visible'; navLogo.style.opacity = '1'; }
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) { heroTitle.style.visibility = 'visible'; heroTitle.style.opacity = '1'; }
-}
+  /* ---------- Footer year ---------- */
+  function initYear() {
+    const el = document.getElementById("year");
+    if (el) el.textContent = new Date().getFullYear();
+  }
 
-// Navigation
-function initNavigation() {
-    const navbar = document.getElementById('navbar');
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+  /* ---------- Navigation ---------- */
+  function initNav() {
+    const navbar = document.getElementById("navbar");
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("nav-menu");
+    const links = Array.from(document.querySelectorAll(".nav-link"));
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
+    const onScroll = () => navbar.classList.toggle("scrolled", window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    hamburger.addEventListener("click", () => {
+      const open = menu.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", String(open));
+    });
+    menu.addEventListener("click", (e) => {
+      if (e.target.closest("a")) {
+        menu.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+      }
     });
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+    // Scrollspy
+    const sections = links
+      .map((l) => document.querySelector(l.getAttribute("href")))
+      .filter(Boolean);
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach((l) =>
+              l.classList.toggle("active", l.getAttribute("href") === "#" + id)
+            );
+          }
         });
-    });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
-    });
-
-    const sections = document.querySelectorAll('section[id]');
-    function updateActiveNavLink() {
-        const scrollPos = window.scrollY + 100;
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                navLinks.forEach(link => link.classList.remove('active'));
-                if (navLink) navLink.classList.add('active');
-            }
+  /* ---------- Scroll reveal ---------- */
+  function initReveal() {
+    const els = document.querySelectorAll(".reveal");
+    if (prefersReduced || !("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("in"));
+      return;
+    }
+    const obs = new IntersectionObserver(
+      (entries, o) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            o.unobserve(entry.target);
+          }
         });
-    }
-    window.addEventListener('scroll', updateActiveNavLink);
-    updateActiveNavLink();
-}
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => obs.observe(el));
+  }
 
-// Hero
-function initHero() {
-    const profileImg = document.getElementById('profile-img');
-    if (profileImg) {
-        profileImg.onerror = function() {
-            this.src = 'data:image/svg+xml;base64,...'; // fallback SVG
-        };
+  /* ---------- Animated counters ---------- */
+  function initCounters() {
+    const els = document.querySelectorAll("[data-count]");
+    if (!els.length) return;
+    if (prefersReduced) {
+      els.forEach((el) => (el.textContent = el.dataset.count + (el.dataset.suffix || "")));
+      return;
     }
-    const heroButtons = document.querySelectorAll('.hero-buttons .btn');
-    heroButtons.forEach(button => {
-        if (button.getAttribute('href').startsWith('#')) {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        }
-    });
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            const aboutSection = document.getElementById('about');
-            if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const run = (el) => {
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || "";
+      const dur = 1400;
+      let start = null;
+      const step = (ts) => {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const obs = new IntersectionObserver(
+      (entries, o) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            run(entry.target);
+            o.unobserve(entry.target);
+          }
         });
-    }
-}
+      },
+      { threshold: 0.5 }
+    );
+    els.forEach((el) => obs.observe(el));
+  }
 
-// Projects
-function initProjects() {
-    const projectsData = [
-        {
-            title: "Card Game (BigCash)",
-            description: "Multiplayer Android card game with scalable instances and real-time gameplay.",
-            category: "game android",
-            technologies: ["Java", "Kotlin", "LibGDX", "Android SDK"],
-            liveUrl: "#",
-            githubUrl: "#",
-            icon: "🃏"
-        },
-        {
-            title: "Casual Games (BigSports)",
-            description: "Developed 12+ games like Car Race & Fruit Chop for BigSports flagship app.",
-            category: "game android",
-            technologies: ["Java", "Kotlin", "LibGDX", "Firebase"],
-            liveUrl: "#",
-            githubUrl: "#",
-            icon: "🎮"
-        },
-        {
-            title: "Todo App",
-            description: "Full-stack task management application with CRUD operations and user authentication.",
-            category: "web",
-            technologies: ["React", "Node.js", "MongoDB", "Express"],
-            liveUrl: "#",
-            githubUrl: "#",
-            icon: "✅"
-        },
-        {
-            title: "Simple Learning App",
-            description: "Interactive educational platform with progress tracking and quiz functionality.",
-            category: "web",
-            technologies: ["JavaScript", "HTML5", "CSS3", "Local Storage"],
-            liveUrl: "#",
-            githubUrl: "#",
-            icon: "📚"
-        },
-        {
-            title: "Legal-Ease Website",
-            description: "Dynamic law management platform built with PHP, MySQL, and Bootstrap.",
-            category: "web",
-            technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-            liveUrl: "#",
-            githubUrl: "#",
-            icon: "⚖️"
-        },
-        {
-            title: "Portfolio Website",
-            description: "Modern responsive portfolio site with animations and smooth UX.",
-            category: "web",
-            technologies: ["HTML5", "CSS3", "JavaScript"],
-            liveUrl: "#",
-            githubUrl: "https://github.com/ratneshsingh955/ratnesh-portfolio",
-            icon: "💼"
-        }
+  /* ---------- Projects ---------- */
+  function renderProjects() {
+    const grid = document.getElementById("projects-grid");
+    if (!grid) return;
+
+    const icons = {
+      ai: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 0-4 4v1a4 4 0 0 0-1 7.87V18a4 4 0 0 0 8 0v-3.13A4 4 0 0 0 16 7V6a4 4 0 0 0-4-4z"/><path d="M9 13h6"/></svg>',
+      law: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7h14M5 7l-2 6h4L5 7zm14 0l-2 6h4l-2-6z"/></svg>',
+      game: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 11v2M6 12h2M15 11h.01M18 13h.01"/></svg>',
+      web: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>',
+    };
+
+    const projects = [
+      {
+        icon: icons.ai,
+        title: "MySA",
+        meta: "AI Productivity · Featured",
+        desc: "AI assistant with chat, voice, smart calendar, and document AI — 150K+ downloads across Android, iOS, and Web.",
+        link: { label: "See above", href: "#mysa" },
+      },
+      {
+        icon: icons.law,
+        title: "Legal-Ease",
+        meta: "Academic · IEEE",
+        desc: "Hybrid lawyer recommendation system built on the AGE-MOEA multi-objective evolutionary algorithm. Published research.",
+        link: { label: "Read publication", href: "https://ieeexplore.ieee.org/document/9792700", external: true },
+      },
+      {
+        icon: icons.game,
+        title: "BigCash & BigSports",
+        meta: "Mobile Gaming",
+        desc: "12+ multiplayer Android games with payment SDKs, Firebase, and REST APIs — used by thousands of daily players.",
+        link: null,
+      },
+      {
+        icon: icons.web,
+        title: "This Portfolio",
+        meta: "Web · Open source",
+        desc: "Hand-built, dependency-free portfolio: dark UI, glassmorphism, an animated neural background, and a perfect Lighthouse target.",
+        link: { label: "View source", href: "https://github.com/ratneshsingh955/ratnesh-portfolio", external: true },
+      },
     ];
 
-    const projectsGrid = document.getElementById('projects-grid');
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    const arrow = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>';
 
-    function createCard(p) {
+    grid.innerHTML = projects
+      .map((p) => {
+        const link = p.link
+          ? `<a class="card__link" href="${p.link.href}"${p.link.external ? ' target="_blank" rel="noopener"' : ""}>${p.link.label} ${arrow}</a>`
+          : `<span class="card__link" style="color:var(--text-faint)">Proprietary — not public</span>`;
         return `
-        <div class="project-card glow-effect ${p.category}">
-          <div class="project-image"><span>${p.icon}</span></div>
-          <div class="project-content">
-            <h3 class="project-title">${p.title}</h3>
-            <p class="project-description">${p.description}</p>
-            <div class="project-tech">${p.technologies.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
-            <div class="project-links">
-              <a href="${p.liveUrl}" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Details</a>
+        <article class="glass card">
+          <div class="card__icon">${p.icon}</div>
+          <span class="card__meta">${p.meta}</span>
+          <h3 class="card__title">${p.title}</h3>
+          <p class="card__desc">${p.desc}</p>
+          ${link}
+        </article>`;
+      })
+      .join("");
+  }
 
-            </div>
-          </div>
-        </div>`;
-}
-
-    function renderProjects(list) {
-        projectsGrid.innerHTML = list.map(createCard).join('');
-    }
-
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            filterButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            if (filter === 'all') renderProjects(projectsData);
-            else renderProjects(projectsData.filter(p => p.category.includes(filter)));
-        });
+  /* ---------- Copy email ---------- */
+  function initCopyEmail() {
+    const btn = document.getElementById("copy-email");
+    if (!btn) return;
+    const label = btn.querySelector(".contact__copy");
+    btn.addEventListener("click", async () => {
+      const email = btn.dataset.email;
+      try {
+        await navigator.clipboard.writeText(email);
+        label.textContent = "Copied!";
+      } catch (e) {
+        window.location.href = "mailto:" + email;
+        return;
+      }
+      setTimeout(() => (label.textContent = "Copy"), 1800);
     });
+  }
 
-    renderProjects(projectsData);
-}
+  /* ---------- Contact form (Formspree) ---------- */
+  function initContactForm() {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
+    const status = document.getElementById("form-status");
+    const FALLBACK_EMAIL = "ratneshsingh955@gmail.com";
 
-// Resume Download Tracking
-function initResumeDownload() {
-    const resumeBtn = document.querySelector('a[download]');
-    if (resumeBtn) {
-        resumeBtn.addEventListener('click', function() {
-            showNotification("Resume download started! ✨", "success");
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        status.textContent = "Please fill in all fields with a valid email.";
+        status.className = "form-status error";
+        return;
+      }
+
+      const action = form.getAttribute("action") || "";
+      const configured = action.includes("formspree.io/f/") && !action.includes("REPLACE_WITH_YOUR_ID");
+
+      // Fallback: open the visitor's email client if Formspree isn't set up yet.
+      if (!configured) {
+        const fd = new FormData(form);
+        const body = `Name: ${fd.get("name")}\nEmail: ${fd.get("email")}\n\n${fd.get("message")}`;
+        window.location.href =
+          `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(fd.get("subject") || "Portfolio contact")}` +
+          `&body=${encodeURIComponent(body)}`;
+        status.textContent = "Opening your email app…";
+        status.className = "form-status";
+        return;
+      }
+
+      const btn = form.querySelector('button[type="submit"]');
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+      status.textContent = "";
+      status.className = "form-status";
+
+      try {
+        const res = await fetch(action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
         });
-    }
-}
-
-// Contact Form with EmailJS
-function initContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        emailjs.sendForm("service_l6hug7e", "template_m9s2k9e", this) // 🔹 Replace
-            .then(() => {
-                showNotification("Message sent successfully! I'll reply soon.", "success");
-                contactForm.reset();
-            })
-            .catch(() => {
-                showNotification("Something went wrong. Please try again.", "error");
-            });
-    });
-}
-
-// Helpers
-function showNotification(message, type="info") {
-    const n = document.createElement('div');
-    n.className = `notification-${type}`;
-    n.style.cssText = `
-      position:fixed;top:20px;right:20px;
-      background:${type==="success"?"#10b981":type==="error"?"#ef4444":"#6366f1"};
-      color:white;padding:1rem 1.5rem;border-radius:.5rem;
-      z-index:9999;transform:translateX(100%);
-      transition:transform .3s;max-width:300px;
-    `;
-    n.textContent = message;
-    document.body.appendChild(n);
-    setTimeout(()=>{n.style.transform="translateX(0)";},100);
-    setTimeout(()=>{n.style.transform="translateX(100%)";setTimeout(()=>n.remove(),300);},5000);
-}
-
-// Scroll Animations
-function initScrollAnimations() {
-    const observer = new IntersectionObserver(entries=>{
-        entries.forEach(e=>{
-            if(e.isIntersecting){
-                e.target.style.opacity="1";
-                e.target.style.transform="translateY(0)";
-            }
-        });
-    }, {threshold:0.1, rootMargin:'0px 0px -50px 0px'});
-    const elements = document.querySelectorAll('.section-header, .about-text, .skill-category, .stat-item, .project-card, .timeline-item, .contact-info, .contact-form');
-    elements.forEach(el=>{
-        el.style.opacity="0";el.style.transform="translateY(30px)";
-        el.style.transition="opacity .6s, transform .6s";observer.observe(el);
-    });
-}
-
-// Particles
-function initParticles() {
-    const container = document.querySelector('.hero-particles');
-    if (!container) return;
-    function createParticle() {
-        const p=document.createElement('div');
-        p.style.cssText=`position:absolute;width:4px;height:4px;background:rgba(255,255,255,0.6);border-radius:50%;animation:floatUp 15s linear infinite;`;
-        p.style.left=Math.random()*100+"%";
-        p.style.animationDelay=Math.random()*15+"s";
-        return p;
-    }
-    for(let i=0;i<50;i++) container.appendChild(createParticle());
-    if(!document.querySelector('#particle-style')){
-        const s=document.createElement('style');s.id='particle-style';
-        s.textContent=`@keyframes floatUp{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-100px) scale(1);opacity:0;}}`;
-        document.head.appendChild(s);
-    }
-}
-
-// Smooth Scroll for anchors
-document.addEventListener('click', function(e) {
-    if (e.target.matches('a[href^="#"]')) {
-        e.preventDefault();
-        const target = document.querySelector(e.target.getAttribute('href'));
-        if (target) {
-            window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+        if (res.ok) {
+          status.textContent = "Message sent — I'll get back to you soon.";
+          status.className = "form-status success";
+          form.reset();
+        } else {
+          throw new Error("Bad response");
         }
-    }
-});
-
-// Preload images
-function preloadImages() {
-    ['images/profile.jpeg'].forEach(src=>{const img=new Image();img.src=src;});
-}
-preloadImages();
-
-// On load animations
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-    document.querySelectorAll('.hero-title, .hero-subtitle').forEach((el,i)=>{
-        setTimeout(()=>{el.style.opacity='1';el.style.transform='translateY(0)';}, i*200);
+      } catch (err) {
+        status.textContent = "Something went wrong. Please email me directly at " + FALLBACK_EMAIL + ".";
+        status.className = "form-status error";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = original;
+      }
     });
-});
+  }
 
-// Error handling
-window.addEventListener('error', e => {
-    if (e.target.tagName === 'IMG') console.warn('Image failed to load:', e.target.src);
-});
+  /* ---------- Neural network canvas ---------- */
+  function initNeuralCanvas() {
+    const canvas = document.getElementById("neural-canvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let w, h, dpr, nodes, raf;
 
-// Export API
-window.PortfolioAPI = {
-    showNotification,
-    updateProjects: initProjects,
-    scrollToSection: id => document.getElementById(id)?.scrollIntoView({behavior:'smooth'})
-};
+    const NODE_COUNT = () => Math.min(70, Math.floor((w * h) / 22000));
+    const MAX_DIST = 140;
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.clientWidth = window.innerWidth;
+      h = canvas.clientHeight = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    }
+
+    function seed() {
+      const n = NODE_COUNT();
+      nodes = Array.from({ length: n }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+      }));
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (const p of nodes) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < MAX_DIST) {
+            const alpha = (1 - dist / MAX_DIST) * 0.22;
+            ctx.strokeStyle = `rgba(139, 92, 246, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+      for (const p of nodes) {
+        ctx.fillStyle = "rgba(34, 211, 238, 0.55)";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(tick);
+    }
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resize, 200);
+    });
+
+    // Pause when tab hidden (saves CPU/battery)
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) cancelAnimationFrame(raf);
+      else raf = requestAnimationFrame(tick);
+    });
+
+    resize();
+    tick();
+  }
+})();

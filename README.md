@@ -1,155 +1,168 @@
-# Ratnesh Singh - Portfolio Website
+# 👋 Hi, I'm Ratnesh Singh
 
-A modern, responsive portfolio website built with HTML5, CSS3, and JavaScript. Features a clean design, smooth animations, and mobile-first approach.
+<div align="center">
 
-## 🚀 Features
+### AI Software Engineer | Flutter | Android | Generative AI | LLM Integration
 
-- **Responsive Design**: Fully responsive across all devices (desktop, tablet, mobile)
-- **Modern UI/UX**: Clean, professional design with smooth animations
-- **Interactive Elements**: Hover effects, smooth scrolling, and dynamic content
-- **Project Showcase**: Filterable project gallery with categories
-- **Contact Form**: Functional contact form with validation
-- **Performance Optimized**: Fast loading with optimized assets
-- **Cross-Browser Compatible**: Works on all modern browsers
+Building production-grade AI-powered mobile applications that solve real-world problems.
 
-## 📁 Project Structure
+[🌐 Portfolio](https://ratneshsingh955.github.io/ratnesh-portfolio/) •
+[💼 LinkedIn](https://www.linkedin.com/in/ratnesh-singhs/) •
+[💻 GitHub](https://github.com/ratneshsingh955) •
+📧 ratneshsingh955@gmail.com
 
-```
-RatneshPortFolio/
-├── index.html              # Main HTML file
-├── css/
-│   └── style.css           # All styles and responsive design
-├── js/
-│   └── script.js           # Interactive functionality
-├── images/
-│   └── profile.jpg         # Profile image (placeholder)
-├── ratnesh_cv.pdf         # CV/Resume file
-└── README.md              # This file
-```
-
-## 🛠️ Technology Stack
-
-- **HTML5**: Semantic markup
-- **CSS3**: Modern styling with Flexbox and Grid
-- **JavaScript**: Vanilla JS for interactivity
-- **Font Awesome**: Icons
-- **Google Fonts**: Inter font family
-
-## 🎨 Sections
-
-1. **Hero Section**: Professional introduction with call-to-action buttons
-2. **About Section**: Personal information, skills, and statistics
-3. **Projects Section**: Filterable showcase of work and projects
-4. **Experience Section**: Professional timeline with roles and responsibilities
-5. **Contact Section**: Contact form and social media links
-
-## 📱 Mobile Responsive Features
-
-- Collapsible navigation menu
-- Touch-friendly buttons and interactions
-- Optimized layouts for all screen sizes
-- Performance optimized for mobile devices
-
-## 🎯 Customization Guide
-
-### Personal Information
-Edit the following in `index.html`:
-- Name in navigation and hero section
-- Professional title and description
-- Contact information
-- Social media links
-- Experience timeline
-- Skills and technologies
-
-### Styling
-Modify `css/style.css`:
-- Color scheme (CSS custom properties at the top)
-- Typography settings
-- Layout adjustments
-- Animation preferences
-
-### Projects
-Update the `projectsData` array in `js/script.js`:
-- Add your own projects
-- Update descriptions and technologies
-- Add live demo and GitHub links
-
-### Profile Image
-Replace `images/profile.jpg` with your professional photo (300x300px recommended)
-
-## 🎨 Color Palette
-
-The website uses a modern color scheme:
-- Primary: #6366f1 (Indigo)
-- Secondary: #ec4899 (Pink)
-- Accent: #06b6d4 (Cyan)
-- Text: #1f2937 (Dark Gray)
-- Background: #ffffff (White)
-
-## 📊 Performance Features
-
-- Optimized images and assets
-- Efficient CSS with custom properties
-- Throttled scroll events
-- Lazy loading ready
-- Minimal external dependencies
-
-## 🛡️ Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## 📈 SEO Features
-
-- Semantic HTML structure
-- Meta tags for social sharing
-- Accessible navigation
-- Fast loading performance
-- Mobile-friendly design
-
-## 🔧 Development
-
-To continue developing:
-
-1. Use a local server (like Live Server in VS Code)
-2. Test on multiple devices and browsers
-3. Optimize images for web
-4. Add your own content and projects
-5. Customize colors and styling to match your brand
-
-## 📝 Content Guidelines
-
-### Writing Effective Content:
-- Keep descriptions concise and impactful
-- Use action words and specific achievements
-- Highlight measurable results when possible
-- Maintain consistent tone throughout
-- Update content regularly
-
-### Image Guidelines:
-- Use high-quality, professional images
-- Optimize file sizes for web
-- Maintain consistent aspect ratios
-- Add proper alt text for accessibility
-
-## 🤝 Contributing
-
-Feel free to fork this project and customize it for your own use. If you make improvements that could benefit others, consider contributing back!
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🙏 Acknowledgments
-
-- Font Awesome for icons
-- Google Fonts for typography
-- Inspiration from modern portfolio designs
-- CSS Grid and Flexbox communities for layout techniques
+</div>
 
 ---
 
-**Ready to showcase your work? Start customizing and make it your own!** 🚀
+# 🚀 About Me
+
+I'm an **AI Software Engineer** with **4+ years of experience** in building scalable Android, Flutter, and AI-powered applications.
+
+Currently working at **MySmartAssistant.ai**, where I'm building **MySA**, an AI-powered productivity platform with **150K+ downloads** across Android, iOS, and Web.
+
+My primary focus is building production-ready AI experiences by integrating **Google Gemini**, **Large Language Models (LLMs)**, **Prompt Engineering**, and **Speech-to-Text (STT)** into mobile applications.
+
+---
+
+# 💼 Professional Experience
+
+### 🤖 AI Software Engineer
+**MySmartAssistant.ai** *(Dec 2025 – Present)*
+
+- Building **MySA**, an AI-powered productivity platform with **150K+ downloads**
+- Developing AI-powered productivity experiences
+- Integrating Google Gemini and multiple LLMs
+- Implementing Prompt Engineering and Speech-to-Text
+- Optimizing Android performance using Baseline Profiles
+- Following Clean Architecture and MVVM
+
+---
+
+### 🎮 Software Engineer
+**Witzeal Technologies** *(Jul 2023 – Nov 2025)*
+
+- Developed and shipped **12+ multiplayer Android games**
+- Integrated Payment SDKs, Firebase, and REST APIs
+- Improved performance, stability, and memory usage
+- Contributed to engineering initiatives supporting **12–15% revenue growth**
+
+---
+
+### 🏢 Project Engineer
+**Wipro Ltd** *(Apr 2022 – Jun 2023)*
+
+- Developed enterprise applications on SAP Hybris Commerce Platform
+- Delivered production support and feature enhancements
+
+---
+
+# 🚀 Featured Product
+
+## 🧠 MySA (My Smart AI Assistant)
+
+AI-powered productivity platform built for Android, iOS, and Web.
+
+### Key Features
+
+- AI Chat
+- Voice Assistant
+- Smart Calendar
+- Task Management
+- Workspace Management
+- Smart Notes
+- Document AI
+
+**Impact**
+
+- 📈 150K+ Downloads
+- 📱 Android, iOS & Web
+
+> **Note:** Built as part of my professional experience at MySmartAssistant.ai. The production source code is proprietary and cannot be shared publicly.
+
+---
+
+# 🛠 Tech Stack
+
+## Mobile
+
+- Flutter
+- Dart
+- Kotlin
+- Java
+- Android SDK
+
+## Artificial Intelligence
+
+- Google Gemini
+- LLM Integration
+- Prompt Engineering
+- Speech-to-Text (STT)
+
+## Architecture
+
+- Clean Architecture
+- MVVM
+
+## Backend & Cloud
+
+- Firebase
+- REST APIs
+
+## Tools
+
+- Android Studio
+- VS Code
+- Git
+- GitHub
+
+---
+
+# 📂 Selected Projects
+
+### 📱 Portfolio Website
+
+Personal portfolio showcasing my experience, projects, and technical skills.
+
+---
+
+### ⚖️ Legal-Ease (Academic)
+
+Legal recommendation system with IEEE publication.
+
+---
+
+### 🎮 BigCash & BigSports
+
+Multiplayer gaming applications developed using Android, Kotlin, Java, and LibGDX.
+
+---
+
+# 📚 Research Publication
+
+**Hybrid Lawyer Recommendation System Based on AGE-MOEA**
+
+📄 IEEE Publication
+
+https://ieeexplore.ieee.org/document/9792700
+
+---
+
+# 🌐 Portfolio
+
+https://ratneshsingh955.github.io/ratnesh-portfolio/
+
+---
+
+# 📫 Connect With Me
+
+- 💼 LinkedIn
+- 💻 GitHub
+- 🌐 Portfolio
+- 📧 ratneshsingh955@gmail.com
+
+---
+
+## ⭐ Thank you for visiting my profile!
+
+If you like my work, feel free to connect or collaborate on AI, Flutter, Android, and Generative AI projects.
