@@ -14,7 +14,7 @@ export function Hero() {
         <Reveal className="max-w-2xl">
           <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-muted">
             <span className="h-2 w-2 rounded-full bg-accent2 animate-pulse-dot" />
-            Open to AI / Software Engineering roles
+            Available for AI, Mobile &amp; Frontend roles
           </span>
 
           <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
